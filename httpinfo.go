@@ -20,7 +20,7 @@
 //			Branch:     vcsBranch,
 //			Full:       version,
 //		}
-//		http.Handle("/info", httpinfo.NewHandler(info, nil)
+//		http.Handle("/info", httpinfo.NewHandler(info, nil))
 //	}
 package httpinfo
 
