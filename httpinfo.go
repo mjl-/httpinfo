@@ -1,27 +1,29 @@
-// Package httpinfo provides an HTTP handler serving information about a running service:
-//
-// Example usage:
-//
-// 	// Variables with versions for your service. Set them at compile time like so:
-// 	//	go build -ldflags "-X main.vcsCommitHash=${COMMITHASH} -X main.vcsTag=${TAG} -X main.vcsBranch=${BRANCH} -X main.version=${VERSION}"
-//	var (
-//		version = "dev"
-//		vcsCommitHash = ""
-//		vcsTag = ""
-//		vcsBranch = ""
-//	)
-//
-//	func init() {
-//		// Since we set the version variables with ldflags -X, we cannot read them in the vars section.
-//		// So we combine them into a CodeVersion during init, and add the handler while we're at it.
-//		info := httpinfo.CodeVersion{
-//			CommitHash: vcsCommitHash,
-//			Tag:        vcsTag,
-//			Branch:     vcsBranch,
-//			Full:       version,
-//		}
-//		http.Handle("/info", httpinfo.NewHandler(info, nil))
-//	}
+/*
+Package httpinfo provides an HTTP handler serving build information (compiler used, modules included, VCS versions) about a running service.
+
+Example usage:
+
+	// Variables with versions for your service. Set them at compile time like so:
+	//	go build -ldflags "-X main.vcsCommitHash=${COMMITHASH} -X main.vcsTag=${TAG} -X main.vcsBranch=${BRANCH} -X main.version=${VERSION}"
+	var (
+		version = "dev"
+		vcsCommitHash = ""
+		vcsTag = ""
+		vcsBranch = ""
+	)
+
+	func init() {
+		// Since we set the version variables with ldflags -X, we cannot read them in the vars section.
+		// So we combine them into a CodeVersion during init, and add the handler while we're at it.
+		info := httpinfo.CodeVersion{
+			CommitHash: vcsCommitHash,
+			Tag:        vcsTag,
+			Branch:     vcsBranch,
+			Full:       version,
+		}
+		http.Handle("/info", httpinfo.NewHandler(info, nil))
+	}
+*/
 package httpinfo
 
 import (
